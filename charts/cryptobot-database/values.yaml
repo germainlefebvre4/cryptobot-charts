@@ -1,0 +1,7 @@
+postgresqlDatabase: cryptobot
+postgresqlUsername: cryptobot
+postgresqlPassword: cryptobot
+
+persistence:
+  enabled: false
+  size: 1Gi

@@ -1,0 +1,70 @@
+replicaCount: 1
+
+image:
+  repository: germainlefebvre4/cryptobot-front
+  pullPolicy: IfNotPresent
+  # pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  hosts:
+    - host: app.cryptobot.germainlefebvre.fr
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - app.cryptobot.germainlefebvre.fr
+      secretName: app-cryptobot-cert
+
+resources:
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+envs:
+  - name: PROJECT_NAME
+    value: Cryptobot Controller
+  - name: SERVER_NAME
+    value: cryptobot-controller
+  - name: SERVER_HOST
+    value: http://cryptobot-controller

@@ -1,0 +1,98 @@
+replicaCount: 1
+
+image:
+  repository: germainlefebvre4/cryptobot-api
+  # pullPolicy: IfNotPresent
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  hosts:
+    - host: api.cryptobot.germainlefebvre.fr
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - api.cryptobot.germainlefebvre.fr
+      secretName: api-cryptobot-cert
+
+resources:
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+envs:
+  - name: PROJECT_NAME
+    value: Cryptobot API
+  - name: SERVER_NAME
+    value: cryptobot-api
+  - name: SERVER_HOST
+    value: http://cryptobot-api
+  # - name: API_KEY
+  #   name: test123
+  - name: USER_ADMIN_FULLNAME
+    value: Admin
+  - name: USER_ADMIN_EMAIL
+    value: admin@cryptobot.fr
+  - name: USER_ADMIN_PASSWORD
+    value: admin
+  - name: USER_TEST_FULLNAME
+    value: Test
+  - name: USER_TEST_EMAIL
+    value: test@cryptobot.fr
+  - name: USER_TEST_PASSWORD
+    value: test
+  - name: USERS_OPEN_REGISTRATION
+    value: True
+  - name: POSTGRES_SERVER
+    value: cryptobot-database-postgresql
+  - name: POSTGRES_PORT
+    value: 5432
+  - name: POSTGRES_DB
+    value: cryptobot
+  - name: POSTGRES_USER
+    value: cryptobot
+  - name: POSTGRES_PASSWORD
+    value: cryptobot
+  - name: CONTROLLER_URL
+    value: http://cryptobot-controller/api/v1
