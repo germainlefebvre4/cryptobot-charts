@@ -2,9 +2,9 @@ replicaCount: 1
 
 image:
   repository: germainlefebvre4/cryptobot-front
-  pullPolicy: IfNotPresent
-  # pullPolicy: Always
-  tag: "latest"
+  # pullPolicy: IfNotPresent
+  pullPolicy: Always
+  tag: "0.2.0"
 
 imagePullSecrets: []
 nameOverride: ""
