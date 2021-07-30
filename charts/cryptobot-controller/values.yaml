@@ -2,9 +2,9 @@ replicaCount: 1
 
 image:
   repository: germainlefebvre4/cryptobot-controller
-  pullPolicy: IfNotPresent
-  # pullPolicy: Always
-  tag: "0.2.0"
+  # pullPolicy: IfNotPresent
+  pullPolicy: Always
+  tag: "0.3.0"
 
 imagePullSecrets: []
 nameOverride: ""
