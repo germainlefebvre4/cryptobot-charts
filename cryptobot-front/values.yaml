@@ -4,7 +4,7 @@ image:
   repository: germainlefebvre4/cryptobot-front
   # pullPolicy: IfNotPresent
   pullPolicy: Always
-  tag: "0.2.0"
+  tag: "0.3.0"
 
 imagePullSecrets: []
 nameOverride: ""
