@@ -23,11 +23,15 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Kubernetes credentials
+        env:
+          AWS_CREDENTIALS_DATA: ${{ secrets.AWS_CREDENTIALS_DATA }}
+          AWS_CONFIG_DATA: ${{ secrets.AWS_CONFIG_DATA }}
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         run: |
           mkdir ~/.aws ~/.kube
-          echo ${{ secrets.AWS_CREDENTIALS_DATA }} | base64 -d > ~/.aws/credentials
-          echo ${{ secrets.AWS_CONFIG_DATA }} | base64 -d > ~/.aws/config
-          echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 -d > ~/.kube/config
+          echo $AWS_CREDENTIALS_DATA | base64 -d > ~/.aws/credentials
+          echo $AWS_CONFIG_DATA | base64 -d > ~/.aws/config
+          echo $KUBE_CONFIG_DATA | base64 -d > ~/.kube/config
       - name: Install dependencies
         env:
           KUBE_VERSION: 1.19.13
