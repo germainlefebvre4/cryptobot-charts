@@ -1,0 +1,50 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      front:
+        description: 'Front version'
+        required: false
+      api:
+        description: 'API version'
+        required: false
+      Controller:
+        description: 'Controller version'
+        required: false
+      Operator:
+        description: 'Operator version'
+        required: false
+
+jobs:
+  deploy_front:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Kubernetes credentials
+        run: |
+          mkdir ~/.aws
+          echo ${{ secrets.AWS_CREDENTIALS_DATA }} | base64 -d > ~/.aws/credentials
+          echo ${{ secrets.AWS_CONFIG_DATA }} | base64 -d > ~/.aws/config
+          echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 -d > ~/.kube/config
+      - name: Install dependencies
+        env:
+          KUBE_VERSION: 1.19.13
+          HELM_VERSION: 3.6.3
+        run: |
+          # Install kubectl
+          wget https://dl.k8s.io/v${KUBE_VERSION}/kubernetes-client-linux-amd64.tar.gz
+          tar -zxf kubernetes-client-linux-amd64.tar.gz
+          chmod +x kubernetes/client/bin/kubectl
+          sudo mv kubernetes/client/bin/kubectl /usr/local/bin/
+          kubectl version --client --kubeconfig=./kube_config
+          
+          # Install Helm
+          wget https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+          tar -zxf helm-v${HELM_VERSION}-linux-amd64.tar.gz
+          sudo mv linux-amd64/helm /usr/local/bin/
+          helm version --client --kubeconfig=./kube_config
+          
+      - run: |
+          echo "Release ${{ github.event.inputs.version }}"
