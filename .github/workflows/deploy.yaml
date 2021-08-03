@@ -24,7 +24,7 @@ jobs:
 
       - name: Kubernetes credentials
         run: |
-          mkdir ~/.aws
+          mkdir ~/.aws ~/.kube
           echo ${{ secrets.AWS_CREDENTIALS_DATA }} | base64 -d > ~/.aws/credentials
           echo ${{ secrets.AWS_CONFIG_DATA }} | base64 -d > ~/.aws/config
           echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 -d > ~/.kube/config
