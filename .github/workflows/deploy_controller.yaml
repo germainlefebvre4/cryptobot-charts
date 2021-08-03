@@ -1,4 +1,4 @@
-name: Deploy controller
+name: Deploy Controller
 
 on:
   workflow_dispatch:
