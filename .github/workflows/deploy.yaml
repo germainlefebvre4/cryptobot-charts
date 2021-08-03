@@ -52,13 +52,13 @@ jobs:
           helm version --client
 
       - name: Deploy front
-        if: github.event.inputs.front != ""
+        if: github.event.inputs.front != ''
         run: |
           cd cryptobot-front/
           helm upgrade --install cryptobot-front -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.front }}"
 
       - name: Deploy api
-        if: github.event.inputs.api != ""
+        if: github.event.inputs.api != ''
         run: |
           cd cryptobot-api/
           helm upgrade --install cryptobot-api -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.api }}"
