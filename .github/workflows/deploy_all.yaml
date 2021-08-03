@@ -1,0 +1,33 @@
+name: Deploy the whole project
+
+on:
+  workflow_dispatch:
+    inputs:
+      front:
+        description: 'Front version'
+        required: false
+      froapit:
+        description: 'API version'
+        required: false
+
+jobs:
+  front:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        if: steps.semantic.outputs.new_release_published == 'true' and github.event.inputs.front != ''
+        with:
+          workflow: Deploy Front
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "version": "${{ github.event.inputs.front }}" }'
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        if: steps.semantic.outputs.new_release_published == 'true' and github.event.inputs.api != ''
+        with:
+          workflow: Deploy API
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "version": "${{ github.event.inputs.api }}" }'
