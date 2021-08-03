@@ -51,5 +51,7 @@ jobs:
           helm version --client
           
       - run: |
-          kubectl version
           echo "Release ${{ github.event.inputs.front }}"
+
+          cd cryptobot-front/
+          helm upgrade --install cryptobot-front -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.front }}""
