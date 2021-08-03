@@ -1,4 +1,4 @@
-name: Deploy the whole project
+name: -- Deploy the whole project
 
 on:
   workflow_dispatch:
