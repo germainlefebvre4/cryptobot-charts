@@ -1,0 +1,48 @@
+name: Deploy Operator
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Operator version'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Kubernetes credentials
+        env:
+          AWS_CREDENTIALS_DATA: ${{ secrets.AWS_CREDENTIALS_DATA }}
+          AWS_CONFIG_DATA: ${{ secrets.AWS_CONFIG_DATA }}
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        run: |
+          mkdir ~/.aws ~/.kube
+          echo $AWS_CREDENTIALS_DATA | sed 's/\\n/\n/g' | base64 -d > ~/.aws/credentials
+          echo $AWS_CONFIG_DATA | sed 's/\\n/\n/g' | base64 -d > ~/.aws/config
+          echo $KUBE_CONFIG_DATA | sed 's/\\n/\n/g' | base64 -d > ~/.kube/config
+
+      - name: Install dependencies
+        env:
+          KUBE_VERSION: 1.19.13
+          HELM_VERSION: 3.6.3
+        run: |
+          # Install kubectl
+          wget -q https://dl.k8s.io/v${KUBE_VERSION}/kubernetes-client-linux-amd64.tar.gz
+          tar -zxf kubernetes-client-linux-amd64.tar.gz
+          chmod +x kubernetes/client/bin/kubectl
+          sudo mv kubernetes/client/bin/kubectl /usr/local/bin/
+          kubectl version --client
+          
+          # Install Helm
+          wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+          tar -zxf helm-v${HELM_VERSION}-linux-amd64.tar.gz
+          sudo mv linux-amd64/helm /usr/local/bin/
+          helm version --client
+
+      - name: Deploy component
+        run: |
+          cd cryptobot-Operator/
+          helm upgrade --install cryptobot-Operator -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.version }}"
