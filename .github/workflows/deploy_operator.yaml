@@ -44,5 +44,5 @@ jobs:
 
       - name: Deploy component
         run: |
-          cd cryptobot-Operator/
+          cd cryptobot-operator/
           helm upgrade --install cryptobot-Operator -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.version }}"
