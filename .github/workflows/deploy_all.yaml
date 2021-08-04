@@ -9,6 +9,12 @@ on:
       api:
         description: 'API version'
         required: false
+      controller:
+        description: 'Controller version'
+        required: false
+      operator:
+        description: 'Operator version'
+        required: false
 
 jobs:
   front:
@@ -31,3 +37,23 @@ jobs:
           workflow: Deploy API
           token: ${{ secrets.PERSONAL_TOKEN }}
           inputs: '{ "version": "${{ github.event.inputs.api }}" }'
+  controller:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        if: github.event.inputs.controller != ''
+        with:
+          workflow: Deploy Controller
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "version": "${{ github.event.inputs.controller }}" }'
+  operator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        if: github.event.inputs.operator != ''
+        with:
+          workflow: Deploy Operator
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "version": "${{ github.event.inputs.operator }}" }'
