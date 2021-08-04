@@ -9,6 +9,11 @@ kubectl config set-context --current --namespace=cryptobot-operator
 
 ## Deployment
 
+### Operator
+```bash
+helm upgrade --install cryptobot-operator -n cryptobot-operator -f values.yaml .
+```
+
 ### Controller
 ```bash
 helm upgrade --install cryptobot-controller -n cryptobot-operator -f values.yaml .
