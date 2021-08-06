@@ -1,0 +1,5 @@
+# Cryptobot
+
+controller:
+  service:
+    externalTrafficPolicy: "Local"
