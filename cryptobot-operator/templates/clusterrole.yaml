@@ -18,6 +18,9 @@ rules:
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 
   # Framework: knowing which other operators are running (i.e. peering).
   - apiGroups: ["kopf.dev"]

@@ -4,7 +4,7 @@ image:
   repository: germainlefebvre4/cryptobot-operator
   pullPolicy: IfNotPresent
   # pullPolicy: Always
-  tag: "0.2.0"
+  tag: "0.5.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -56,3 +56,5 @@ affinity: {}
 envs:
   - name: CRYPTOBOT_VERSION
     value: v3.2.2
+  - name: DOCKER_IMAGE_PULL_POLICY
+    value: Always
