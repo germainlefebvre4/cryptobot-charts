@@ -57,4 +57,4 @@ envs:
   - name: CRYPTOBOT_VERSION
     value: v3.2.2
   - name: DOCKER_IMAGE_PULL_POLICY
-    value: Always
+    value: IfNotPresent
