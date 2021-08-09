@@ -1,5 +1,10 @@
 # Kubernetes Cluster
 
+## How to setup kubernetes setup?
+
+Find more information about eksctl at [https://eksctl.io/](https://eksctl.io/).
+
+
 ## Cluster configuration
 
 ```bash
