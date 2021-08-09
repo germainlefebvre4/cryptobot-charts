@@ -52,3 +52,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+envs:
+  - name: CRYPTOBOT_VERSION
+    value: v3.2.2
