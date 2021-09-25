@@ -55,6 +55,6 @@ affinity: {}
 
 envs:
   - name: CRYPTOBOT_VERSION
-    value: v3.2.2
+    value: v4.0.2
   - name: DOCKER_IMAGE_PULL_POLICY
     value: IfNotPresent
