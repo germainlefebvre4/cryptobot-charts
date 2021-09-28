@@ -1,5 +1,8 @@
 # Cryptobot
 
 controller:
+  config:
+    enable-modsecurity: "true"
+    enable-owasp-modsecurity-crs: "true"
   service:
     externalTrafficPolicy: "Local"

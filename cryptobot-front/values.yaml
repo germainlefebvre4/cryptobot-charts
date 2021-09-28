@@ -30,6 +30,8 @@ ingress:
   className: "nginx"
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/modsecurity-snippet: |
+      SecRuleEngine On
   hosts:
     - host: app.cryptobot.germainlefebvre.fr
       paths:
