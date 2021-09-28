@@ -6,5 +6,5 @@ Install postgres database in kubernetes cluster.
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install cryptobot-database bitnami/postgresql -f values.yaml
+helm install cryptobot-database bitnami/postgresql -f values.yaml --set "postgresqlPassword=myPassword"
 ```

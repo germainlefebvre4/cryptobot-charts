@@ -92,7 +92,9 @@ envs:
     value: cryptobot
   - name: POSTGRES_USER
     value: cryptobot
-  - name: POSTGRES_PASSWORD
-    value: YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0g
   - name: CONTROLLER_URL
     value: http://cryptobot-controller/api/v1
+
+database:
+  postgres:
+    password: myPassword
