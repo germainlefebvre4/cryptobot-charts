@@ -17,13 +17,13 @@ helm upgrade --install cryptobot-controller -n cryptobot-operator --create-names
 ### Database
 ```bash
 cd cryptobot-database/
-helm upgrade --install cryptobot-database -n cryptobot-operator --create-namespace bitnami/postgresql -f values.yaml
+helm upgrade --install cryptobot-database -n cryptobot-operator --create-namespace bitnami/postgresql -f values.yaml --set "postgresqlPassword=myPassword"
 ```
 
 ### API
 ```bash
 cd cryptobot-api/
-helm upgrade --install cryptobot-api -n cryptobot-operator --create-namespace -f values.yaml .
+helm upgrade --install cryptobot-api -n cryptobot-operator --create-namespace -f values.yaml . --set "database.postgres.password=myPassword"
 ```
 
 ### Front
