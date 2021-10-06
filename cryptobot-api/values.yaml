@@ -31,7 +31,7 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/modsecurity-snippet: |
-      SecRuleEngine On
+      SecRuleEngine Off
   hosts:
     - host: api.cryptobot.germainlefebvre.fr
       paths:
