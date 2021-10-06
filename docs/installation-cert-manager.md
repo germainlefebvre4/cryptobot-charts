@@ -8,7 +8,7 @@ https://kubernetes.github.io/ingress-nginx/
 
 
 ## Deployment
-Deploy the cert-manager with the following parameters:
+Deploy the component with the following parameters:
 
 * Release name: `cert-manager`
 * Chart: [`jetstack/cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager)

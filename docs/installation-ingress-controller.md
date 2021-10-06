@@ -3,13 +3,13 @@
 ## What is an ingress controller
 Installation du chart `ingress-nginx` en tant que Ingress Controller dans le cluster Kubernetes.
 
-Find more information about Cert Manager at [https://kubernetes.github.io/ingress-nginx/](https://kubernetes.github.io/ingress-nginx/).
+Find more information about Ingress Nginx at [https://kubernetes.github.io/ingress-nginx/](https://kubernetes.github.io/ingress-nginx/).
 
-# Configuration
+## Configuration
 Configuration file `values.yaml`:
 
 ## Deployment
-Deploy the ingress controller with the following parameters:
+Deploy the component with the following parameters:
 
 * Release name: `ingress-nginx`
 * Chart: [`ingress-nginx/ingress-nginx`](https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx)

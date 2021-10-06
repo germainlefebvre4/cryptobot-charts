@@ -23,7 +23,7 @@ helm upgrade --install cryptobot-database -n cryptobot-operator --create-namespa
 ### API
 ```bash
 cd cryptobot-api/
-helm upgrade --install cryptobot-api -n cryptobot-operator --create-namespace -f values.yaml . --set "database.postgres.password=myPassword"
+helm upgrade --install cryptobot-api -n cryptobot-operator --create-namespace -f values.yaml . --set "database.postgres.password=YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0g"
 ```
 
 ### Front
