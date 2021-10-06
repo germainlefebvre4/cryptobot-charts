@@ -1,0 +1,29 @@
+# Chart: grafana/loki-stack
+# Version: 2.4.1
+
+grafana:
+  enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-staging
+
+    hosts:
+      - grafana.cryptobot.germainlefebvre.fr
+    tls:
+      - hosts:
+          - grafana.cryptobot.germainlefebvre.fr
+        secretName: grafana-cryptobot-cert
+
+prometheus:
+  enabled: true
+  alertmanager:
+    persistentVolume:
+      enabled: false
+  server:
+    persistentVolume:
+      enabled: true
+loki:
+  persistence:
+    enabled: true
+    size: 5Gi
