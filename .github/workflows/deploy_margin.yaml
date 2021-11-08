@@ -1,10 +1,10 @@
-name: Deploy API
+name: Deploy Margin
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'API version'
+        description: 'Margin version'
         required: true
 
 jobs:
@@ -49,5 +49,5 @@ jobs:
 
       - name: Deploy component
         run: |
-          cd cryptobot-api/
-          helm upgrade --install cryptobot-api -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.version }}" --set "database.postgres.password=${{ secrets.DATABASE_POSTGRES_PASSWORD }}" --set "config.api.secret=${{ secrets.API_KEY }}"
+          cd cryptobot-margin/
+          helm upgrade --install cryptobot-margin -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.version }}" --set "config.api.secret=${{ secrets.API_KEY }}"
