@@ -61,7 +61,7 @@ envs:
   - name: SERVER_HOST
     value: http://cryptobot-margin
   - name: API_URL
-    value: http://cryptobot-api/private/api/v1"
+    value: http://cryptobot-api/private/api/v1
 
 config:
   api:
