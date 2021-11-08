@@ -15,6 +15,9 @@ on:
       operator:
         description: 'Operator version'
         required: false
+      margin:
+        description: 'Margin version'
+        required: false
 
 jobs:
   front:
@@ -57,3 +60,13 @@ jobs:
           workflow: Deploy Operator
           token: ${{ secrets.PERSONAL_TOKEN }}
           inputs: '{ "version": "${{ github.event.inputs.operator }}" }'
+  margin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        if: github.event.inputs.margin != ''
+        with:
+          workflow: Deploy Margin
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "version": "${{ github.event.inputs.margin }}" }'

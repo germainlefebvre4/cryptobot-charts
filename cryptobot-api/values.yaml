@@ -96,7 +96,13 @@ envs:
     value: cryptobot
   - name: CONTROLLER_URL
     value: http://cryptobot-controller/api/v1
+  - name: MARGIN_URL
+    value: http://cryptobot-margin/api/v1
 
 database:
   postgres:
     password: myPassword
+
+config:
+  api:
+    secret: test123
