@@ -35,7 +35,7 @@ ingress:
   hosts:
     - host: api.cryptobot.germainlefebvre.fr
       paths:
-        - path: /
+        - path: /api/
           pathType: ImplementationSpecific
   tls:
     - hosts:
@@ -61,7 +61,17 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchExpressions:
+        - key: cryptobot.fr/name: api
+          operator: In
+          values:
+          - api
+      topologyKey: "kubernetes.io/hostname"
+
 
 envs:
   - name: PROJECT_NAME
