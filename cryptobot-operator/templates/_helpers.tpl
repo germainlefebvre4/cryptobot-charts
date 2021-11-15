@@ -51,6 +51,13 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Application labels
+*/}}
+{{- define "cryptobot-api.applicationLabels" -}}
+cryptobot.fr/name: operator
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "cryptobot-operator.serviceAccountName" -}}

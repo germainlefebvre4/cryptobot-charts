@@ -51,6 +51,13 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Application labels
+*/}}
+{{- define "cryptobot-api.applicationLabels" -}}
+cryptobot.fr/name: margin
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "cryptobot-margin.serviceAccountName" -}}

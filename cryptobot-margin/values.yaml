@@ -51,7 +51,16 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchExpressions:
+        - key: cryptobot.fr/name
+          operator: In
+          values:
+          - margin
+      topologyKey: "kubernetes.io/hostname"
 
 envs:
   - name: PROJECT_NAME

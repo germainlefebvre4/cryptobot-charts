@@ -36,6 +36,7 @@ Common labels
 {{- define "cryptobot-front.labels" -}}
 helm.sh/chart: {{ include "cryptobot-front.chart" . }}
 {{ include "cryptobot-front.selectorLabels" . }}
+{{ include "cryptobot-front.applicationLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -48,6 +49,13 @@ Selector labels
 {{- define "cryptobot-front.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "cryptobot-front.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Application labels
+*/}}
+{{- define "cryptobot-api.applicationLabels" -}}
+cryptobot.fr/name: front
 {{- end }}
 
 {{/*
