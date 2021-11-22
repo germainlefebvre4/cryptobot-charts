@@ -74,7 +74,7 @@ envs:
   - name: POSTGRES_PORT
     value: 5432
   - name: POSTGRES_DB
-    value: cryptobot
+    value: margin
   - name: POSTGRES_USER
     value: cryptobot
   - name: API_URL
