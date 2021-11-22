@@ -50,4 +50,4 @@ jobs:
       - name: Deploy component
         run: |
           cd cryptobot-margin/
-          helm upgrade --install cryptobot-margin -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.version }}" --set "config.api.secret=${{ secrets.API_KEY }}"
+          helm upgrade --install cryptobot-margin -n cryptobot-operator -f values.yaml . --set "image.tag=${{ github.event.inputs.version }}" --set "database.postgres.password=${{ secrets.DATABASE_POSTGRES_PASSWORD }}" --set "config.api.secret=${{ secrets.API_KEY }}"
