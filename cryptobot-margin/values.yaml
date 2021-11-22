@@ -69,6 +69,14 @@ envs:
     value: cryptobot-margin
   - name: SERVER_HOST
     value: http://cryptobot-margin
+  - name: POSTGRES_SERVER
+    value: cryptobot-database-postgresql
+  - name: POSTGRES_PORT
+    value: 5432
+  - name: POSTGRES_DB
+    value: cryptobot
+  - name: POSTGRES_USER
+    value: cryptobot
   - name: API_URL
     value: http://cryptobot-api/private/api/v1
 
