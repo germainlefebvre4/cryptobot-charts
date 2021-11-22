@@ -80,6 +80,10 @@ envs:
   - name: API_URL
     value: http://cryptobot-api/private/api/v1
 
+database:
+  postgres:
+    password: myPassword
+
 config:
   api:
     secret: test123
