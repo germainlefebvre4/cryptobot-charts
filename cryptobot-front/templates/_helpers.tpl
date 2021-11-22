@@ -54,7 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Application labels
 */}}
-{{- define "cryptobot-api.applicationLabels" -}}
+{{- define "cryptobot-front.applicationLabels" -}}
 cryptobot.fr/name: front
 {{- end }}
 

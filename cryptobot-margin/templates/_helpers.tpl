@@ -36,6 +36,7 @@ Common labels
 {{- define "cryptobot-margin.labels" -}}
 helm.sh/chart: {{ include "cryptobot-margin.chart" . }}
 {{ include "cryptobot-margin.selectorLabels" . }}
+{{ include "cryptobot-margin.applicationLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -53,7 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Application labels
 */}}
-{{- define "cryptobot-api.applicationLabels" -}}
+{{- define "cryptobot-margin.applicationLabels" -}}
 cryptobot.fr/name: margin
 {{- end }}
 

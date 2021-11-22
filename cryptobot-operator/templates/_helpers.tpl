@@ -36,6 +36,7 @@ Common labels
 {{- define "cryptobot-operator.labels" -}}
 helm.sh/chart: {{ include "cryptobot-operator.chart" . }}
 {{ include "cryptobot-operator.selectorLabels" . }}
+{{ include "cryptobot-operator.applicationLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -53,7 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Application labels
 */}}
-{{- define "cryptobot-api.applicationLabels" -}}
+{{- define "cryptobot-operator.applicationLabels" -}}
 cryptobot.fr/name: operator
 {{- end }}
 
