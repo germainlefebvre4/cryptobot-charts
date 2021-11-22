@@ -17,7 +17,7 @@ helm upgrade --install cryptobot-controller -n cryptobot-operator -f values.yaml
 ### Database
 ```bash
 cd cryptobot-database/
-helm upgrade --install cryptobot-database -n cryptobot-operator --create-namespace bitnami/postgresql -f values.yaml --set "postgresqlPassword=myPassword"
+helm upgrade --install cryptobot-database -n cryptobot-operator --create-namespace bitnami/postgresql -f values.yaml --version 10.13.8 --set "postgresqlPassword=myPassword"
 ```
 
 ### API

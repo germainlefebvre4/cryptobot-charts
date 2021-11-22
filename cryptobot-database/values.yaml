@@ -5,3 +5,6 @@ postgresqlUsername: cryptobot
 persistence:
   enabled: true
   size: 1Gi
+
+metrics:
+  enabled: true
