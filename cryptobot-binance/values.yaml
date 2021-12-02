@@ -82,6 +82,11 @@ envs:
 
 cache:
   redis:
+    sentinel:
+      server: cryptobot-redis
+      port: 26379
+    database: 0
+    username: cryptobot
     password: myPassword
 
 config:

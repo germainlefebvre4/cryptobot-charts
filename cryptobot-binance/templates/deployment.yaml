@@ -50,6 +50,14 @@ spec:
             - name: {{ .name | quote }}
               value: {{ .value | quote }}
             {{- end }}
+            - name: REDIS_SENTINEL_SERVER
+              value: {{ .Values.cache.redis.sentinel.server | quote }}
+            - name: REDIS_SENTINEL_PORT
+              value: {{ .Values.cache.redis.sentinel.port | quote }}
+            - name: REDIS_DATABASE
+              value: {{ .Values.cache.redis.database | quote }}
+            - name: REDIS_USERNAME
+              value: {{ .Values.cache.redis.username | quote }}
             - name: REDIS_PASSWORD
               value: {{ .Values.cache.redis.password | quote }}
             - name: API_KEY
