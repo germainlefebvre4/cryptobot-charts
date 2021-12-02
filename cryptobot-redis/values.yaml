@@ -2,8 +2,7 @@ architecture: replication
 
 auth:
   enabled: true
-  sentinel:
-    enabled: false
+  sentinel: false
   password: "password"
 
 master:
