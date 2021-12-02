@@ -1,6 +1,6 @@
 postgresqlDatabase: cryptobot
 postgresqlUsername: cryptobot
-# postgresqlPassword: YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0g
+# postgresqlPassword: cryptobot
 
 persistence:
   enabled: true

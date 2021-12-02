@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: germainlefebvre4/cryptobot-margin
+  repository: germainlefebvre4/cryptobot-binance
   # pullPolicy: IfNotPresent
   pullPolicy: Always
   tag: "0.1.0"
@@ -59,31 +59,29 @@ affinity:
         - key: cryptobot.fr/name
           operator: In
           values:
-          - margin
+          - binance
       topologyKey: "kubernetes.io/hostname"
 
 envs:
   - name: PROJECT_NAME
-    value: Cryptobot Margin
+    value: Cryptobot Binance
   - name: SERVER_NAME
-    value: cryptobot-margin
+    value: cryptobot-binance
   - name: SERVER_HOST
-    value: http://cryptobot-margin
-  - name: POSTGRES_SERVER
+    value: http://cryptobot-binance
+  - name: REDIS_SERVER
     value: cryptobot-database-postgresql
-  - name: POSTGRES_PORT
+  - name: REDIS_PORT
     value: 5432
-  - name: POSTGRES_DB
-    value: margin
-  - name: POSTGRES_USER
+  - name: REDIS_DB
+    value: binance
+  - name: REDIS_USER
     value: cryptobot
   - name: API_URL
     value: http://cryptobot-api/private/api/v1
-  - name: BINANCE_URL
-    value: http://cryptobot-binance/api/v1
 
-database:
-  postgres:
+cache:
+  redis:
     password: myPassword
 
 config:
