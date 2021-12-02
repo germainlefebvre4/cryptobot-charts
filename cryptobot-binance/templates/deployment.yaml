@@ -51,7 +51,7 @@ spec:
               value: {{ .value | quote }}
             {{- end }}
             - name: REDIS_PASSWORD
-              value: {{ .Values.database.postgres.password | quote }}
+              value: {{ .Values.cache.redis.password | quote }}
             - name: API_KEY
               value: {{ .Values.config.api.secret | quote }}
       {{- with .Values.nodeSelector }}

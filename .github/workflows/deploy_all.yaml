@@ -18,6 +18,9 @@ on:
       margin:
         description: 'Margin version'
         required: false
+      binance:
+        description: 'Binance version'
+        required: false
 
 jobs:
   front:
@@ -70,3 +73,13 @@ jobs:
           workflow: Deploy Margin
           token: ${{ secrets.PERSONAL_TOKEN }}
           inputs: '{ "version": "${{ github.event.inputs.margin }}" }'
+  binance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        if: github.event.inputs.binance != ''
+        with:
+          workflow: Deploy Binance
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          inputs: '{ "version": "${{ github.event.inputs.binance }}" }'
