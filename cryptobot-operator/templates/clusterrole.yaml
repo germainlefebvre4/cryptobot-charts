@@ -44,3 +44,7 @@ rules:
   - apiGroups: [""]
     resources: [events]
     verbs: [create]
+
+  - apiGroups: ["apps"]
+    resources: ["deployments/scale"]
+    verbs: ["patch"]
