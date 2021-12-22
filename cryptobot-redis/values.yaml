@@ -6,6 +6,7 @@ auth:
   password: "password"
 
 master:
+  disableCommands: []
   resources:
     limits: {}
     requests: {}
