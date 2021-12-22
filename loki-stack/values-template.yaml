@@ -1,5 +1,5 @@
 # Chart: grafana/loki-stack
-# Version: 2.4.1
+# Version: 2.5.0
 
 loki:
   enabled: true
@@ -16,7 +16,7 @@ grafana:
     datasources:
       enabled: true
   image:
-    tag: 7.5.0
+    tag: 8.1.6
 
 prometheus:
   enabled: false
