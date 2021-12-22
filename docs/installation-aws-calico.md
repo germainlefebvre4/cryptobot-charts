@@ -25,6 +25,22 @@ kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/master
 ```
 
 
+## Extends EIP range
+Extends maximum pod count limited with AWS Instance Type by prefixing interface.
+
+> https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+
+```bash
+kubectl set env daemonset aws-node -n kube-system ENABLE_PREFIX_DELEGATION=true
+kubectl set env ds aws-node -n kube-system WARM_PREFIX_TARGET=1
+kubectl set env ds aws-node -n kube-system WARM_IP_TARGET=5
+kubectl set env ds aws-node -n kube-system MINIMUM_IP_TARGET=2
+```
+Deploy new managed node group with 110 pods configured then verify its deployment.
+```bash
+kubectl get nodes -o json | jq '.items[] | {name: .metadata.name, pods: .status.allocatable.pods}'
+```
+
 ## Uninstall
 Remove the Helm chart:
 ```bash
