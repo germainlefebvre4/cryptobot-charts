@@ -108,6 +108,8 @@ envs:
     value: http://cryptobot-controller/api/v1
   - name: MARGIN_URL
     value: http://cryptobot-margin/api/v1
+  - name: BINANCE_URL
+    value: http://cryptobot-binance/api/v1
 
 database:
   postgres:
